@@ -16,7 +16,7 @@ void AMyPawn1::BeginPlay()
 {
 	Super::BeginPlay();
 	//BlueprintNativeEvent1_Implementation();//如果用这个调用会执行C++的代码，不会执行蓝图中的功能
-	//BlueprintNativeEvent1();//使用这个声明而不是上述带后缀_Implementation的方法可以实现蓝图被调用，而C++中的不会被调用
+	BlueprintNativeEvent1();//使用这个声明而不是上述带后缀_Implementation的方法可以实现蓝图被调用，而C++中的不会被调用
 
 	//ImplementableEvent1();
 	//ImplementableEvent2();
