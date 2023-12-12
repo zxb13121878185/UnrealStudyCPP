@@ -5,6 +5,10 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 #include "Engine/DataTable.h"
+#include "MyObject1.h"
+#include "MyGameInstance1.h"
+#include "GameFramework/SpringArmComponent.h"
+#include "Camera/CameraComponent.h"
 #include "MyPawn1.generated.h"
 
 UENUM(BlueprintType)//生成枚举的反射数据，通过反射将枚举暴露给蓝图，实现C++和蓝图的通信,BlueprintType的作用是可以在蓝图创建变量的时候也可以作为选项
@@ -38,6 +42,7 @@ USTRUCT(BlueprintType)
 struct FMyStruct//必须以F开头
 {
 	GENERATED_USTRUCT_BODY()
+	FMyStruct();
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MyStruct")
 	int32 Health;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MyStruct")
@@ -160,5 +165,19 @@ public:
 	//结构体
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MyStruct")
 	FMyStruct MyStructValue;
+
+	//实例化
+	UMyObject1* MyTestObject;
+	UMyGameInstance1* MyGameInstance;
+
+public:
+
+	//添加摄像机组件
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "MyComponent")
+	USceneComponent* MyRoot;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "MyComponent")
+	USpringArmComponent* MySprintArm;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "MyComponent")
+	UCameraComponent* MyCamera;
 };
 

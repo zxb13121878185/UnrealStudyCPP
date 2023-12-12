@@ -3,3 +3,8 @@
 
 #include "MyObject1.h"
 
+FMyObject1Data::FMyObject1Data()
+{
+	Age = 1;
+	MyName = "Default";
+}

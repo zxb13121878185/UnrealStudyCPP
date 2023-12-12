@@ -20,35 +20,35 @@ void AMyGameMode1::BeginPlay()
 	//LogTemp临时日志记录类别名称，Warning日志记录的级别，TEXT是要打印文本的内容，内容如果为中文会乱码
 	//日志记录的级别有三种从大至小分别为：Error（红色）、Warning（黄色）、Display（白色）
 	//UE_LOG(LogTemp, Warning, TEXT("This is a Warning Info!"));
-	UE_LOG(LogTemp, Warning, TEXT("%d"), 10);//打印整形
-	UE_LOG(LogTemp, Warning, TEXT("%f"), 0.1f);//打印浮点数
-	UE_LOG(LogTemp, Warning, TEXT("%d"), false);//打印Bool类型
-	UE_LOG(LogTemp, Warning, TEXT("%c"), 'A');//打印Char类型
+	//UE_LOG(LogTemp, Warning, TEXT("%d"), 10);//打印整形
+	//UE_LOG(LogTemp, Warning, TEXT("%f"), 0.1f);//打印浮点数
+	//UE_LOG(LogTemp, Warning, TEXT("%d"), false);//打印Bool类型
+	//UE_LOG(LogTemp, Warning, TEXT("%c"), 'A');//打印Char类型
 
-	FString tempStr2 = "测试打印";
-	UE_LOG(LogTemp, Warning, TEXT("%s"), *tempStr2);//打印String类型
+	//FString tempStr2 = "测试打印";
+	//UE_LOG(LogTemp, Warning, TEXT("%s"), *tempStr2);//打印String类型
 
 
-	FVector tempVec = FVector(1, 2, 3);
-	UE_LOG(LogTemp, Warning, TEXT("%s"), *tempVec.ToString());//打印向量
+	//FVector tempVec = FVector(1, 2, 3);
+	//UE_LOG(LogTemp, Warning, TEXT("%s"), *tempVec.ToString());//打印向量
 	//打印到屏幕上：-1是默认值，5.0是显示在屏幕上的时间，文本内容为中文会乱码
 	//GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("This is a ScreenDebugInfo"));
 
 #pragma region Type cast
 
 	//创建一个Fstring
-	FString MyString = TEXT("I am string");
+	//FString MyString = TEXT("I am string");
 	//Fstring 转换成Fname
-	FName MyName = FName(*MyString);
+	//FName MyName = FName(*MyString);
 	//Fstring转换成FText
-	FText MyText = FText::FromString(MyString);
+	//FText MyText = FText::FromString(MyString);
 
 	//Fname转换成Fstring
-	MyString = MyName.ToString();
+	//MyString = MyName.ToString();
 	//FName转换成FText
-	FText text1 = FText::FromName(MyName);
+//	FText text1 = FText::FromName(MyName);
 	//FText转化成FString
-	FString strFromText = text1.ToString();
+//	FString strFromText = text1.ToString();
 	//注意这里Ftext不能直接转化成FName，需要先转化成FString，然后再转化成FName
 
 #pragma endregion
