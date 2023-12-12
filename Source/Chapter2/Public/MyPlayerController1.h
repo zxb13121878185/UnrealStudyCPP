@@ -7,11 +7,15 @@
 #include "MyPlayerController1.generated.h"
 
 /**
- * 
+ *
  */
 UCLASS()
 class CHAPTER2_API AMyPlayerController1 : public APlayerController
 {
 	GENERATED_BODY()
-	
+
+public:
+	virtual void SetupInputComponent();
+	void WheelUpFunction();
+	void WheelDownFunction();
 };

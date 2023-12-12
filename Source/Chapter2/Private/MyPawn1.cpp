@@ -117,6 +117,27 @@ void AMyPawn1::PrintMeta()
 
 }
 
+void AMyPawn1::ZoomCam(bool Dir, float ZoomSpeed)
+{
+	//true为向上滑动，反之向下
+	if (Dir)
+	{
+		if (MySprintArm->TargetArmLength >= 300 && MySprintArm->TargetArmLength < 5000)
+		{
+			MySprintArm->TargetArmLength += (ZoomSpeed * 2);
+			GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("SpringArmLen is %s"), MySprintArm->TargetArmLength);
+		}
+	}
+	else
+	{
+		if (MySprintArm->TargetArmLength >= 300 && MySprintArm->TargetArmLength < 5000)
+		{
+			MySprintArm->TargetArmLength -= (ZoomSpeed * 2);
+			GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Green, TEXT("SpringArmLen is %s"), MySprintArm->TargetArmLength);
+		}
+	}
+}
+
 FMyStruct::FMyStruct()
 {
 	MyName = TEXT("Default");

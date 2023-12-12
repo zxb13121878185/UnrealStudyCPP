@@ -179,5 +179,8 @@ public:
 	USpringArmComponent* MySprintArm;
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "MyComponent")
 	UCameraComponent* MyCamera;
+
+	//鼠标滑轮移动镜头缩放
+	void ZoomCam(bool Dir, float ZoomSpeed);
 };
 
