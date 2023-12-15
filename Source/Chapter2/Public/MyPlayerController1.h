@@ -18,4 +18,5 @@ public:
 	virtual void SetupInputComponent();
 	void WheelUpFunction();
 	void WheelDownFunction();
+	virtual void BeginPlay()override;
 };

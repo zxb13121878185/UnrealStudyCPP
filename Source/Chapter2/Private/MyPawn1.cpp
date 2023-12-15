@@ -29,7 +29,7 @@ void AMyPawn1::BeginPlay()
 	//ImplementableEvent1();
 	//ImplementableEvent2();
 
-#pragma region MyRegion
+#pragma region DynamicLoad
 
 	//实例化一个Object类
 	//TSubclassOf<UMyObject1> MySubclassObject = UMyObject1::StaticClass();
@@ -59,7 +59,7 @@ void AMyPawn1::BeginPlay()
 
 	//摄像机摇臂设置其旋转位移和缩放
 	FVector	tempLocation = FVector(0, 0, 0);
-	FRotator tempRot = FRotator(-50, 0, 0);
+	FRotator tempRot = FRotator(0, 0, 0);
 	FVector tempScale = FVector(1, 1, 1);
 	SetActorLocation(tempLocation);
 	SetActorRotation(tempRot);
@@ -71,6 +71,11 @@ void AMyPawn1::BeginPlay()
 void AMyPawn1::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	//控制物体移动
+	FVector tempOffset = FVector(-1, 0, 0);
+	FHitResult tempHitResult;
+	AddActorWorldOffset(tempOffset, false, &tempHitResult);//基于世界坐标的移动，不会受到本身朝向的影响
 
 }
 
@@ -122,19 +127,13 @@ void AMyPawn1::ZoomCam(bool Dir, float ZoomSpeed)
 	//true为向上滑动，反之向下
 	if (Dir)
 	{
-		if (MySprintArm->TargetArmLength >= 300 && MySprintArm->TargetArmLength < 5000)
-		{
-			MySprintArm->TargetArmLength += (ZoomSpeed * 2);
-			GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("SpringArmLen is %s"), MySprintArm->TargetArmLength);
-		}
+		MySprintArm->TargetArmLength += (ZoomSpeed * 2);
+		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::White, FString::Printf(TEXT("SpringArmLen is %f"), MySprintArm->TargetArmLength));
 	}
 	else
 	{
-		if (MySprintArm->TargetArmLength >= 300 && MySprintArm->TargetArmLength < 5000)
-		{
-			MySprintArm->TargetArmLength -= (ZoomSpeed * 2);
-			GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Green, TEXT("SpringArmLen is %s"), MySprintArm->TargetArmLength);
-		}
+		MySprintArm->TargetArmLength -= (ZoomSpeed * 2);
+		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::White, FString::Printf(TEXT("SpringArmLen is %f"), MySprintArm->TargetArmLength));
 	}
 }
 
