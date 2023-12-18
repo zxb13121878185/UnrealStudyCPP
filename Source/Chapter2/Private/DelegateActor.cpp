@@ -14,7 +14,7 @@ ADelegateActor::ADelegateActor()
 
 	//单播代理绑定
 	//NoParamDelegate1.BindUObject(this, &ADelegateActor::NoParamDelegateFunc1);
-	//	NoParamDelegate1.Unbind();//解绑
+	//NoParamDelegate1.Unbind();//解绑
 	//NoParamDelegate1.BindStatic(StaticNoParamDelegate);//绑定全局静态函数
 	//NoParamDelegate1.BindStatic(MyRawClass::RawStaticNoParamDelegateFunc);//绑定其他类的静态函数
 	//MyRawClass tempRawClass;
@@ -34,17 +34,18 @@ ADelegateActor::ADelegateActor()
 	//	}
 	//);
 
-
-
-	OneParamDelegate1.BindUObject(this, &ADelegateActor::OneParamDelegateFunc);
-	TwoParamDelegate1.BindUObject(this, &ADelegateActor::TwoParamDelegateFunc);
-	OnlyRetDelegate1.BindUObject(this, &ADelegateActor::OnlyRetDelegateFunc);
-	RetOneParamDelegate1.BindUObject(this, &ADelegateActor::RetOneParamDelegateFunc);
+	//OneParamDelegate1.BindUObject(this, &ADelegateActor::OneParamDelegateFunc);
+	//TwoParamDelegate1.BindUObject(this, &ADelegateActor::TwoParamDelegateFunc);
+	//OnlyRetDelegate1.BindUObject(this, &ADelegateActor::OnlyRetDelegateFunc);
+	//RetOneParamDelegate1.BindUObject(this, &ADelegateActor::RetOneParamDelegateFunc);
 
 	//多播代理的绑定
-	MulDelegate_OneParam1.AddUObject(this, &ADelegateActor::MulDelegate_OneParamFunc1);
-	MulDelegate_OneParam1.AddUObject(this, &ADelegateActor::MulDelegate_OneParamFunc2);
+	//MulDelegate_OneParam1.AddUObject(this, &ADelegateActor::MulDelegate_OneParamFunc1);
+	//MulDelegate_OneParam1.AddUObject(this, &ADelegateActor::MulDelegate_OneParamFunc2);
 	//MulDelegate_OneParam.RemoveAll();
+
+	//事件绑定
+	//ActionEvent.AddUObject(this, &ADelegateActor::OneParamDelegateFunc);
 }
 
 // Called when the game starts or when spawned
@@ -53,13 +54,12 @@ void ADelegateActor::BeginPlay()
 	Super::BeginPlay();
 
 	//绑定智指针
-	TSharedRef<MyRawClass> ObjSP1 = MakeShareable(new MyRawClass());
-	NoParamDelegate1.BindSP(ObjSP1, &MyRawClass::Raw_NoParamDelegateFunc);
+	//TSharedRef<MyRawClass> ObjSP1 = MakeShareable(new MyRawClass());
+	//NoParamDelegate1.BindSP(ObjSP1, &MyRawClass::Raw_NoParamDelegateFunc);
 
 	//单播代理调用
-	NoParamDelegate1.ExecuteIfBound();
+	//NoParamDelegate1.ExecuteIfBound();
 	//NoParamDelegate2.ExecuteIfBound();
-
 	//OneParamDelegate1.ExecuteIfBound("TestStr");
 	//TwoParamDelegate1.ExecuteIfBound("TwoParam", 22222);
 	//OnlyRetDelegate1.Execute();//这个和上面的不一样
@@ -67,10 +67,14 @@ void ADelegateActor::BeginPlay()
 	//GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Blue, tempStr);
 
 	////多播代理执行
-//	MulDelegate_OneParam1.Broadcast("MulDelegate");
+	//MulDelegate_OneParam1.Broadcast("MulDelegate");
 
 	////动态多播代理执行
 	//DynamicMulDelegate.Broadcast("Dynamic Mul Cast");
+
+	//事件触发
+	//ActionEvent.Broadcast("Event Call");
+
 }
 
 // Called every frame
@@ -122,6 +126,8 @@ void ADelegateActor::MulDelegate_OneParamFunc2(FString strVal)
 	FString tempStr = strVal.Append("2");
 	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Blue, FString::Printf(TEXT("%s"), *tempStr));
 }
+
+
 
 void StaticNoParamDelegate()
 {

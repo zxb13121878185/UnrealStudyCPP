@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "MyRawClass.h"
 #include "GameFramework/Actor.h"
 #include "DelegateActor.generated.h"
 
@@ -16,8 +17,14 @@ DECLARE_DELEGATE_RetVal_OneParam(FString, RetOneParamDelegate, FString);//定义
 //多播委托类声明
 DECLARE_MULTICAST_DELEGATE_OneParam(MulDelegate_OneParam, FString);//带一个参数的
 
+//事件声明
+DECLARE_EVENT_OneParam(MyRawClass, MyActionEvent1, FString);
+
 //动态多播委托，区别在于它可以暴露给蓝图，在蓝图中进行事件的绑定
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FDynamicMulDelegate, FString, param);//一个参数的动态多播委托,名称一定要F开头不然会编译报错“Delegate type declarations must start with F”
+
+
+
 
 static void StaticNoParamDelegate();
 
@@ -59,9 +66,12 @@ public:
 	FString OnlyRetDelegateFunc();
 	FString RetOneParamDelegateFunc(FString strVal);
 
-	//多播代理绑定函数定义
+	//多播委托绑定函数定义
 	void MulDelegate_OneParamFunc1(FString strVal);
 	void MulDelegate_OneParamFunc2(FString strVal);
 
-	//动态多播代理绑定函数定义
+	//动态多播委托在蓝图或其他执行中完成动态绑定，无需在此定义绑定函数
+
+	//事件变量
+	MyActionEvent1 ActionEvent;
 };

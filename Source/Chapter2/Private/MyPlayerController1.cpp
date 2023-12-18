@@ -38,10 +38,10 @@ void AMyPlayerController1::WheelDownFunction()
 void AMyPlayerController1::BeginPlay()
 {
 	Super::BeginPlay();
-	//这里的参数NULL和表示只是加载到场景中，不会加载到这个类下面
-	UClass* WidgetCalss = LoadClass<UUserWidget>(NULL, TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/BluePrint/UICPP.UICPP_C'"));
-	UUserWidget* MyWidgetClass = nullptr;
-	MyWidgetClass = CreateWidget<UUserWidget>(GetWorld(), WidgetCalss);
-	MyWidgetClass->AddToViewport();
+	//这里的参数NULL表示只是加载到场景中，不会加载到这个类下面
+	//UClass* WidgetCalss = LoadClass<UUserWidget>(NULL, TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/BluePrint/UICPP.UICPP_C'"));
+	//UUserWidget* MyWidgetClass = nullptr;
+	//MyWidgetClass = CreateWidget<UUserWidget>(GetWorld(), WidgetCalss);
+	//MyWidgetClass->AddToViewport();
 
 }

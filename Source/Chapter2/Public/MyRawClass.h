@@ -2,6 +2,7 @@
 
 #pragma once
 
+//#include "DelegateActor.h"
 #include "CoreMinimal.h"
 
 /**
@@ -18,4 +19,9 @@ public:
 public:
 	static void RawStaticNoParamDelegateFunc();
 	void Raw_NoParamDelegateFunc();
+
+	void RawOneParamEventFunc(FString strVal);
+
+public:
+
 };
