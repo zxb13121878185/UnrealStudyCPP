@@ -9,7 +9,11 @@
 #include "Particles/ParticleSystemComponent.h"
 #include "Components/AudioComponent.h"
 #include "GameFramework/Actor.h"
+#include "Kismet/GameplayStatics.h"
+#include "MyCharacter1.h"
 #include "MyActor1.generated.h"
+
+
 
 UCLASS()
 class CHAPTER2_API AMyActor1 : public AActor

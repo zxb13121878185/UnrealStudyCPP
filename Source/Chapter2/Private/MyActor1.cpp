@@ -114,6 +114,14 @@ void AMyActor1::Tick(float DeltaTime)
 
 void AMyActor1::BeginOverlapFunc(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
+	//先将其他碰撞到的转化成角色
+	AMyCharacter1* tempCharacter = Cast<AMyCharacter1>(OtherActor);
+	if (tempCharacter)
+	{
+		//应用伤害
+		UGameplayStatics::ApplyDamage(tempCharacter, 5.0f, nullptr, this, UDamageType::StaticClass());
+	}
+
 	//MyParticle->Activate();
 	MyParticle->SetActive(true);
 	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("BeginOverLapEvent is success"));

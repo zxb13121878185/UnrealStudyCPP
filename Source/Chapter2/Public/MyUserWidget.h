@@ -17,7 +17,7 @@ class CHAPTER2_API UMyUserWidget : public UUserWidget
 
 public:
 
-	//这里设定的“buttonStart"按钮名称后面创建蓝图类UI中按钮的名称和这个一样
+	//这里BindWidget设定的“buttonStart"按钮名称后面创建蓝图类UI中按钮的名称和这个一样
 	UPROPERTY(meta = (BindWidget))
 	UButton* ButtonStart;
 	UPROPERTY(meta = (BindWidget))
