@@ -2,6 +2,7 @@
 
 
 #include "Actor_Bullet.h"
+#include "Materials/MaterialInstanceDynamic.h"
 
 // Sets default values
 AActor_Bullet::AActor_Bullet()
@@ -35,6 +36,13 @@ void AActor_Bullet::BeginPlay()
 {
 	Super::BeginPlay();
 
+	//改变物体材质的属性
+
+	UMaterialInstanceDynamic* tempMat = BulletMesh->CreateAndSetMaterialInstanceDynamic(0);
+	if (tempMat)
+	{
+		tempMat->SetVectorParameterValue("Color", FLinearColor::Yellow);
+	}
 }
 
 // Called every frame
